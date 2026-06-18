@@ -1,4 +1,4 @@
-# linux-security-change-timeline 🛡️
+# Linux-Security-Change-Timeline 🛡️
 
 ## 🚀 Sobre el proyecto
 En ciberseguridad, **si no se registró, no ocurrió**. Los cambios pequeños en la configuración de un servidor Linux a menudo pasan desapercibidos, creando brechas de seguridad o configuraciones erróneas que permanecen ocultas hasta que ocurre un incidente. 
@@ -34,8 +34,6 @@ El flujo de trabajo está diseñado para ser ligero y eficiente:
 - `scripts/`: Motor de automatización (Python).
 - `timeline/`: Informes de auditoría generados listos para revisar.
 - `screenshots/`: Evidencia visual de la herramienta funcionando.
-
-# linux-security-change-timeline
 
 ## Problema
 Los pequeños cambios en la configuración de un servidor Linux a menudo pasan desapercibidos, creando brechas de seguridad o configuraciones erróneas que no se detectan hasta que ocurre un incidente. La falta de un registro histórico de cambios dificulta la auditoría y la respuesta a incidentes.
