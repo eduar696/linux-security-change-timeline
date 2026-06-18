@@ -1,20 +1,34 @@
 import os
 import shutil
+import pwd
 from datetime import datetime
 
 # Configuracion de rutas
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 EVIDENCE_DIR = os.path.join(BASE_DIR, 'evidence')
 
-# Archivos que queremos rastrear
 FILES_TO_COLLECT = [
     '/etc/passwd',
     '/etc/ssh/sshd_config',
-    '/etc/ufw/user.rules' # Ajusta si tu ruta de UFW es distinta
+    '/etc/ufw/user.rules'
 ]
 
+def fix_ownership(path):
+    """Cambia el dueño de la carpeta recolectada al usuario que ejecutó sudo."""
+    sudo_user = os.environ.get('SUDO_USER')
+    if sudo_user:
+        user_info = pwd.getpwnam(sudo_user)
+        uid = user_info.pw_uid
+        gid = user_info.pw_gid
+        # Cambia el dueño de la carpeta y todo su contenido
+        for root, dirs, files in os.walk(path):
+            os.chown(root, uid, gid)
+            for f in files:
+                os.chown(os.path.join(root, f), uid, gid)
+        print(f"[*] Propiedad restaurada al usuario: {sudo_user}")
+
 def collect():
-    # Crear una carpeta con la fecha actual
+    # Crear carpeta con fecha
     timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
     snapshot_dir = os.path.join(EVIDENCE_DIR, timestamp)
     
@@ -31,6 +45,10 @@ def collect():
                 print(f"[!] Error al copiar {file_path}: {e}")
         else:
             print(f"[!] Archivo no encontrado: {file_path}")
+
+    # Si se ejecutó con sudo, reparamos los permisos
+    if os.geteuid() == 0:
+        fix_ownership(snapshot_dir)
 
     print("[*] Recolección finalizada.")
 
