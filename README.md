@@ -37,7 +37,7 @@ El sistema rastrea los siguientes elementos críticos:
 
 Ejecuta el script de recolección para tomar una "foto" del estado actual del sistema:
 
-```bash
+```
 sudo python3 scripts/collect_evidence.py
 ```
 
@@ -56,15 +56,14 @@ El resultado se generará en timeline/timeline.md
 
 Requisitos:
 
-    Python 3.x
+Python 3.x
 
-    Privilegios: Acceso de lectura sobre archivos de sistema (/etc/) y logs.
+Privilegios: Acceso de lectura sobre archivos de sistema (/etc/) y logs.
 
-    Sistema Operativo: Distribuciones Linux (probado en entornos tipo ```Debian/Ubuntu/RHEL).
+Sistema Operativo: Distribuciones Linux (probado en entornos tipo Debian/Ubuntu/RHEL).
+
     
-    
-    
-    ## Consideraciones de Seguridad
+## Consideraciones de Seguridad
 
 Esta herramienta está diseñada exclusivamente para entornos de auditoría y administración de sistemas. Se recomienda ejecutarla siempre con los privilegios mínimos necesarios para la lectura de los archivos de configuración especificados, evitando la ejecución con privilegios de superusuario (`sudo`) cuando no sea estrictamente necesario.
 
