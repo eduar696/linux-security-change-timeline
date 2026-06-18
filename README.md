@@ -34,13 +34,12 @@ El sistema rastrea los siguientes elementos críticos:
 ## Uso
 
 ### 1. Recolección de evidencia
-
-Ejecuta el script de recolección para tomar una "foto" del estado actual del sistema:
+Ejecuta el script con `sudo` para permitir el acceso a los archivos de configuración protegidos:
 
 ```
 sudo python3 scripts/collect_evidence.py
 ```
-
+_Nota: El script restaurará automáticamente los permisos de los archivos generados a tu usuario actual._
 
 
 ### 2. Generación del Timeline
@@ -54,18 +53,13 @@ python3 scripts/build_timeline.py
 El resultado se generará en timeline/timeline.md
 
 
-Requisitos:
-
-Python 3.x
-
-Privilegios: Acceso de lectura sobre archivos de sistema (/etc/) y logs.
-
-Sistema Operativo: Distribuciones Linux (probado en entornos tipo Debian/Ubuntu/RHEL).
+### Requisitos
+- **Python 3.x**
+- **Privilegios:** El script requiere privilegios elevados (`sudo`) para acceder a archivos protegidos del sistema (ej. `/etc/ufw/user.rules`). El script gestiona automáticamente la restauración de permisos tras la recolección.
 
     
 ## Consideraciones de Seguridad
-
-Esta herramienta está diseñada exclusivamente para entornos de auditoría y administración de sistemas. Se recomienda ejecutarla siempre con los privilegios mínimos necesarios para la lectura de los archivos de configuración especificados, evitando la ejecución con privilegios de superusuario (`sudo`) cuando no sea estrictamente necesario.
+Esta herramienta está diseñada para entornos de auditoría. Para garantizar una recolección completa, el script requiere ejecución con `sudo`. Hemos implementado una **función de seguridad de restauración de propiedad**: tras la recolección, el script devuelve automáticamente la propiedad de los archivos al usuario original, asegurando que se mantenga el principio de menor privilegio y permitiendo la gestión posterior de los archivos sin necesidad de privilegios administrativos.
 
 ---
 *Desarrollado como proyecto de auditoría de sistemas Linux.*
