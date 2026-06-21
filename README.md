@@ -27,20 +27,15 @@ El motor de análisis monitorea áreas críticas para detectar cualquier modific
 
 ---
 
+## 📂 Estructura
+La lógica del proyecto se divide en: `/scripts` (automatización), `/evidence` (capturas históricas), y `/timeline` (reportes generados).
+---
+
 ## 📊 Resultado
 El sistema genera un reporte de auditoría estructurado en Markdown, facilitando la investigación rápida y permitiendo identificar:
 1. **Qué cambió:** Diferencias exactas con formato diff.
 2. **Cuándo cambió:** Basado en el timestamp de la captura.
 3. **Impacto:** Severidad del cambio detectado.
-
----
-
-## 📁 Estructura del Proyecto
-* `/docs`: Diagramas de arquitectura y documentación técnica detallada.
-* `/evidence`: Repositorio de instantáneas (snapshots) históricas.
-* `/scripts`: Motor de automatización en Python (recolección y análisis).
-* `/timeline`: Informes de auditoría generados listos para revisar.
-* `/screenshots`: Evidencia visual de la herramienta funcionando.
 
 ---
 
