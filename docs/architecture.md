@@ -1,16 +1,22 @@
 # Arquitectura del Sistema
 
-El sistema sigue un flujo de trabajo lineal diseñado para garantizar la integridad y trazabilidad de los datos:
+El proyecto sigue un flujo de trabajo sencillo basado en la recolección periódica de snapshots y su posterior compración para identificar cambios en configuraciones relevantes del sistema.
 
 ### Diagrama de Flujo
 ```text
-[ Servidor Linux ] 
+[ Servidor Linux ]
        |
        v
-[ Script de Recolección (collect_evidence.py) ] --> (Guarda snapshot en /evidence)
+[ collect_evidence.py ]
        |
        v
-[ Script de Análisis (build_timeline.py) ] <--- (Compara /evidence)
+(Guarda snapshots en /evidence)
        |
        v
-[ Reporte de Trazabilidad (timeline.md) ]
+[ build_timeline.py ]
+       |
+       v
+(Compara snapshots)
+       |
+       v
+[ timeline.md ]
