@@ -1,53 +1,125 @@
 # Linux-Security-Change-Timeline 🛡️
 
 ## 🚀 Sobre el proyecto
-En ciberseguridad, **si no se registró, no ocurrió**. Los cambios sutiles en la configuración de un servidor Linux suelen pasar desapercibidos, creando brechas de seguridad o configuraciones erróneas que permanecen ocultas hasta que ocurre un incidente.
 
-**Linux-Security-Change-Timeline** automatiza la auditoría de integridad (FIM) y el registro histórico, permitiendo a administradores y analistas de seguridad mantener una línea de tiempo precisa de cambios críticos en sistemas Linux.
+En ciberseguridad, **si no se registró, no ocurrió**.
+
+Los cambios en la configuración de un servidor Linux pueden pasar desapercibidos durante días o semanas, dificultando la investigación de incidentes y la identificación del momento exacto en que una configuración crítica fue modificada.
+
+**Linux-Security-Change-Timeline** es un proyecto personal desarrollado en Python que automatiza la recolección de instantáneas (snapshots) de configuraciones críticas de un sistema Linux y genera una línea de tiempo con las diferencias detectadas entre capturas.
+
+El objetivo del proyecto es demostrar conocimientos de automatización, administración de Linux y auditoría básica de configuraciones mediante reportes fáciles de interpretar.
 
 ---
 
-## 🏗️ Problema y Solución
-* **Problema:** La falta de un registro histórico detallado de cambios en la configuración dificulta la auditoría forense y la detección temprana de intrusiones.
-* **Solución:** Nuestra herramienta automatiza la comparación inteligente entre instantáneas (snapshots) del sistema, generando reportes estructurados que detallan **qué** cambió, **cuándo** y cuál es el **impacto** de seguridad.
+# 🏗️ Problema y Solución
+
+### Problema
+
+Durante una investigación forense o una revisión de seguridad suele ser difícil responder preguntas como:
+
+- ¿Qué cambió?
+- ¿Cuándo ocurrió el cambio?
+- ¿Qué archivo fue modificado?
+
+Aunque Linux dispone de distintas herramientas de auditoría, muchas generan grandes volúmenes de información o requieren configuraciones más avanzadas.
+
+### Solución
+
+Este proyecto realiza capturas periódicas de configuraciones críticas del sistema y compara cada snapshot con el anterior para generar un reporte en formato Markdown que muestra las diferencias encontradas mediante un formato tipo **diff**.
+
+No pretende reemplazar herramientas especializadas de monitoreo continuo, sino ofrecer una forma sencilla de visualizar cambios históricos en configuraciones relevantes.
 
 ---
 
-## 👁️ Visualización del Reporte
+# 👁️ Visualización del Reporte
+
 ![Auditoría de Cambios](screenshots/auditoria_deteccion_cambio.png)
 
-## ✨ Capacidades de Detección
-El motor de análisis monitorea áreas críticas para detectar cualquier modificación no autorizada:
-
-- ✔ **Gestión de Identidad:** Cambios en `/etc/passwd` y `/etc/group` (nuevos usuarios/grupos).
-- ✔ **Hardening SSH:** Modificaciones en `sshd_config` que podrían comprometer el acceso remoto.
-- ✔ **Control de Red:** Cambios en reglas de firewall (`iptables`/`ufw`).
-- ✔ **Servicios del Sistema:** Auditoría del estado y configuración de servicios activos.
-- ✔ **Archivos Sensibles:** Monitoreo de integridad en archivos con permisos elevados.
+El reporte permite visualizar de forma sencilla las diferencias entre dos snapshots consecutivos, facilitando la revisión manual de cambios realizados en archivos sensibles.
 
 ---
 
-## 📊 Resultado
-El sistema genera un reporte de auditoría estructurado en Markdown, facilitando la investigación rápida y permitiendo identificar:
-1. **Qué cambió:** Diferencias exactas con formato diff.
-2. **Cuándo cambió:** Basado en el timestamp de la captura.
-3. **Impacto:** Severidad del cambio detectado.
+# ✨ Capacidades de Detección
 
+Actualmente el proyecto analiza cambios en configuraciones relacionadas con:
 
----
+- ✔ Gestión de usuarios (`/etc/passwd` y `/etc/group`)
+- ✔ Configuración de SSH (`sshd_config`)
+- ✔ Reglas de firewall (`iptables` / `ufw`)
+- ✔ Estado y configuración básica de servicios
+- ✔ Archivos sensibles definidos durante la recolección
 
-## 📁 Estructura del Proyecto
-* `/docs`: Diagramas de arquitectura y documentación técnica detallada.
-* `/evidence`: Repositorio de instantáneas (snapshots) históricas.
-* `/scripts`: Motor de automatización en Python (recolección y análisis).
-* `/timeline`: Informes de auditoría generados listos para revisar.
-* `/screenshots`: Evidencia visual de la herramienta funcionando.
-
+Las detecciones se basan en la comparación entre snapshots consecutivos del sistema.
 
 ---
 
-## ⚙️ Arquitectura
-El flujo de trabajo está diseñado para ser ligero, eficiente y auditable:
-`Servidor Linux` → `Recolección` → `Análisis Forense` → `Timeline Report`.
+# 📊 Resultado
 
-*Consulta la [documentación detallada aquí](docs/architecture.md).*
+El proyecto genera un reporte de auditoría en Markdown donde se pueden identificar:
+
+1. Qué archivo cambió.
+2. Las diferencias exactas mediante formato diff.
+3. Entre qué snapshots ocurrió el cambio.
+4. El momento en que fue detectado.
+
+Este reporte está pensado como apoyo para revisiones de configuración y ejercicios de auditoría en entornos Linux.
+
+---
+
+# 📁 Estructura del Proyecto
+
+```
+docs/
+├── Documentación técnica
+├── Arquitectura
+
+evidence/
+├── Snapshots recolectados
+
+scripts/
+├── Recolección
+├── Comparación
+├── Generación de reportes
+
+timeline/
+├── Reportes generados
+
+screenshots/
+├── Evidencia visual
+```
+
+---
+
+# ⚙️ Arquitectura
+
+El flujo de trabajo es simple y está orientado a facilitar la auditoría de configuraciones.
+
+```
+Servidor Linux
+        │
+        ▼
+ Recolección de snapshots
+        │
+        ▼
+ Comparación entre capturas
+        │
+        ▼
+ Generación de reporte Markdown
+```
+
+El proyecto prioriza la simplicidad y la claridad del proceso sobre la implementación de una plataforma completa de monitoreo.
+
+---
+
+## 🎯 Objetivo del proyecto
+
+Este repositorio fue desarrollado como proyecto de aprendizaje para practicar:
+
+- Automatización con Python
+- Administración de sistemas Linux
+- Comparación de configuraciones
+- Generación automática de reportes
+- Organización de proyectos técnicos en GitHub
+
+No pretende sustituir soluciones como AIDE, auditd o Wazuh, sino demostrar una implementación propia de un flujo básico de auditoría basado en snapshots.
