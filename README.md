@@ -121,6 +121,7 @@ El reporte está pensado como apoyo para revisiones de configuración y ejercici
 El flujo de trabajo es sencillo y está orientado a facilitar la auditoría de configuraciones mediante la comparación de snapshots.
 
 
+```
 Servidor Linux
         │
         ▼
@@ -137,6 +138,8 @@ Comparación entre snapshots (modificados, añadidos, eliminados)
         │
         ▼
 Generación de reporte Markdown (timeline.md)
+
+```
 
 Para una descripción más detallada del flujo de trabajo, consulta docs/architecture.md.
 
