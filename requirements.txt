@@ -1,0 +1,6 @@
+# Este proyecto utiliza exclusivamente bibliotecas estándar de Python.
+# No se requieren dependencias externas para su ejecución.
+#
+# Módulos utilizados:
+#   - os, shutil, pwd, datetime (recolección de evidencia)
+#   - os, difflib (generación de timeline)
