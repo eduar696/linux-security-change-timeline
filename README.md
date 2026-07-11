@@ -1,4 +1,4 @@
-# Linux-Security-Change-Timeline 🛡️
+# Linux Security Change Timeline 🛡️
 
 ![Python](https://img.shields.io/badge/Python-3.13-blue?logo=python&logoColor=white)
 ![Platform](https://img.shields.io/badge/Platform-Linux-FCC624?logo=linux&logoColor=black)
