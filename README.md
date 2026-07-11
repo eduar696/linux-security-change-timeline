@@ -140,7 +140,7 @@ Comparación entre snapshots (modificados, añadidos, eliminados)
 Generación de reporte Markdown (timeline.md)
 ```
 
-Para una descripción más detallada del flujo de trabajo, consulta docs/architecture.md.
+Para una descripción más detallada del flujo de trabajo, consulta [docs/architecture.md](docs/architecture.md).
 
 
 # 🎯 Objetivo del Proyecto
