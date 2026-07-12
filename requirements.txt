@@ -4,3 +4,8 @@
 # Módulos utilizados:
 #   - os, shutil, pwd, datetime (recolección de evidencia)
 #   - os, difflib (generación de timeline)
+
+# Requisitos del sistema (no de Python):
+#   - openssh-server (para que exista /etc/ssh/sshd_config)
+#   - ufw (para que exista /etc/ufw/user.rules)
+#   - sudo o root access (para leer archivos de configuración del sistema)
