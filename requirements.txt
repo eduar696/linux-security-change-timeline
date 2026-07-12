@@ -1,10 +1,10 @@
 # Este proyecto utiliza exclusivamente bibliotecas estándar de Python.
-# No se requieren dependencias externas para su ejecución.
+# No se requieren dependencias externas de Python para su ejecución.
 #
 # Módulos utilizados:
 #   - os, shutil, pwd, datetime (recolección de evidencia)
 #   - os, difflib (generación de timeline)
-
+#
 # Requisitos del sistema (no de Python):
 #   - openssh-server (para que exista /etc/ssh/sshd_config)
 #   - ufw (para que exista /etc/ufw/user.rules)
