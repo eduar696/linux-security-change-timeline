@@ -146,11 +146,11 @@ Para una descripción más detallada del flujo de trabajo, consulta [docs/archit
 # 🎯 Objetivo del Proyecto
 Este repositorio fue desarrollado como proyecto de aprendizaje para practicar:
 
-Automatización con Python.
-Administración de sistemas Linux.
-Comparación de configuraciones mediante snapshots.
-Detección de archivos añadidos, eliminados y modificados.
-Generación automática de reportes.
-Organización y documentación de proyectos técnicos en GitHub.
+- Automatización con Python. 
+- Administración de sistemas Linux.
+- Comparación de configuraciones mediante snapshots.
+- Detección de archivos añadidos, eliminados y modificados.
+- Generación automática de reportes.
+- Organización y documentación de proyectos técnicos en GitHub.
 
 El proyecto no pretende sustituir soluciones como AIDE, auditd o Wazuh, sino demostrar una implementación propia de un flujo básico de auditoría basado en snapshots y generación automática de reportes.
