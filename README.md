@@ -14,7 +14,7 @@ En ciberseguridad, **si no se registró, no ocurrió**.
 
 Los cambios en la configuración de un servidor Linux pueden pasar desapercibidos durante días o semanas, dificultando la investigación de incidentes y la identificación del momento exacto en que una configuración crítica fue modificada.
 
-**Linux-Security-Change-Timeline** es un proyecto personal desarrollado en Python que automatiza la recolección de snapshots de configuraciones críticas de un sistema Linux y genera una línea de tiempo con las diferencias detectadas entre capturas consecutivas.
+**Linux Security Change Timeline** es un proyecto personal desarrollado en Python que automatiza la recolección de snapshots de configuraciones críticas de un sistema Linux y genera una línea de tiempo con las diferencias detectadas entre capturas consecutivas.
 
 El objetivo del proyecto es demostrar conocimientos de automatización con Python, administración de sistemas Linux y generación de reportes de auditoría mediante un flujo sencillo y fácil de interpretar.
 
