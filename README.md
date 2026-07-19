@@ -168,3 +168,7 @@ Este repositorio fue desarrollado como proyecto de aprendizaje para practicar:
 - Organización y documentación de proyectos técnicos en GitHub.
 
 El proyecto no pretende sustituir soluciones como AIDE, auditd o Wazuh, sino demostrar una implementación propia de un flujo básico de auditoría basado en snapshots y generación automática de reportes.
+
+## 📝 Licencia
+
+MIT License — ver [LICENSE](LICENSE) para detalles.
