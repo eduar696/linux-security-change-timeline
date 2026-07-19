@@ -20,7 +20,7 @@ El objetivo del proyecto es demostrar conocimientos de automatización con Pytho
 
 ---
 
-# 🏗️ Problema y Solución
+## 🏗️ Problema y Solución
 
 ### Problema
 
@@ -42,7 +42,7 @@ Su objetivo es facilitar la revisión histórica de cambios en archivos de confi
 
 ---
 
-# 👁️ Visualización del Reporte
+## 👁️ Visualización del Reporte
 
 ![Auditoría de Cambios](screenshots/auditoria_deteccion_cambio.png)
 
@@ -50,7 +50,7 @@ El reporte permite visualizar de forma sencilla las diferencias entre dos snapsh
 
 ---
 
-# ✨ Capacidades de Detección
+## ✨ Capacidades de Detección
 
 Actualmente el proyecto compara snapshots para identificar:
 
@@ -63,7 +63,7 @@ Las detecciones se basan en la comparación entre snapshots consecutivos almacen
 
 ---
 
-# 📊 Resultado
+## 📊 Resultado
 
 El proyecto genera un reporte de auditoría en formato Markdown donde es posible identificar:
 
@@ -76,21 +76,39 @@ El reporte está pensado como apoyo para revisiones de configuración y ejercici
 
 ---
 
+## 🎮 Uso
+
+El proyecto se ejecuta en dos pasos:
+
+### Paso 1: Recolectar evidencia
+
+```bash
+sudo python3 scripts/collect_evidence.py
+```
+
+Recolecta snapshots de archivos de configuración críticos ```(/etc/passwd, /etc/ssh/sshd_config, /etc/ufw/user.rules) y los almacena en evidence/ con timestamp.```
+
+Nota: Se requiere sudo para acceder a archivos protegidos del sistema. El script restaura automáticamente la propiedad al usuario original después de la recolección.
+
+### Paso 2: Generar el timeline
+
+```bash
+python3 scripts/build_timeline.py
+```
+Compara el snapshot más reciente con el anterior, detecta archivos modificados, añadidos o eliminados, y genera el reporte en timeline/timeline.md.
+
 # 🛠️ Tecnologías utilizadas
 
-- Python 3
-- Linux
-- Bash
-- Markdown
-- `os`, `shutil`, `pwd` (recolección de snapshots)
-- `difflib` (comparación de archivos)
-- `datetime` (timestamps)
-
----
-
+    Python 3
+    Linux
+    Bash
+    Markdown
+    os, shutil, pwd (recolección de snapshots)
+    difflib (comparación de archivos)
+    datetime (timestamps)
+    
 # 📁 Estructura del Proyecto
-
-```text
+```
 .
 ├── docs/
 │   └── architecture.md          # Arquitectura y flujo del proyecto
@@ -111,15 +129,12 @@ El reporte está pensado como apoyo para revisiones de configuración y ejercici
 │
 ├── .gitignore
 ├── LICENSE
-├── main.py
 ├── README.md
 └── requirements.txt
-
 ```
 
 # ⚙️ Arquitectura
 El flujo de trabajo es sencillo y está orientado a facilitar la auditoría de configuraciones mediante la comparación de snapshots.
-
 
 ```
 Servidor Linux
@@ -140,17 +155,16 @@ Comparación entre snapshots (modificados, añadidos, eliminados)
 Generación de reporte Markdown (timeline.md)
 ```
 
-Para una descripción más detallada del flujo de trabajo, consulta [docs/architecture.md](docs/architecture.md).
+Para una descripción más detallada del flujo de trabajo, consulta docs/architecture.md.
 
-
-# 🎯 Objetivo del Proyecto
+🎯 Objetivo del Proyecto
 Este repositorio fue desarrollado como proyecto de aprendizaje para practicar:
 
-- Automatización con Python. 
+- Automatización con Python.
 - Administración de sistemas Linux.
 - Comparación de configuraciones mediante snapshots.
 - Detección de archivos añadidos, eliminados y modificados.
-- Generación automática de reportes.
+-  Generación automática de reportes.
 - Organización y documentación de proyectos técnicos en GitHub.
 
 El proyecto no pretende sustituir soluciones como AIDE, auditd o Wazuh, sino demostrar una implementación propia de un flujo básico de auditoría basado en snapshots y generación automática de reportes.
